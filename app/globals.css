@@ -30,7 +30,7 @@ body {
   overflow-x: hidden;
 }
 body.locked { overflow: hidden; }
-img, svg, canvas { display: block; max-width: 100%; }
+img, svg, canvas, video { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
 h1, h2, h3, h4, p, ul, ol, figure { margin: 0; padding: 0; }
@@ -182,6 +182,7 @@ ul, ol { list-style: none; }
 
 /* ---------- Sections ---------- */
 .section { padding: clamp(72px, 9vw, 120px) 0; position: relative; }
+section[id], main[id] { scroll-margin-top: 88px; }
 .bg-white { background: var(--white); }
 .bg-paper { background: var(--paper); }
 .bg-ink { background: var(--ink); color: #fff; }
@@ -1055,6 +1056,7 @@ ul, ol { list-style: none; }
 .info-card h3 { font-size: 20px; font-weight: 400; margin-bottom: 14px; }
 .info-card a.big { font-size: 22px; letter-spacing: -0.02em; display: inline-block; background: linear-gradient(var(--blue), var(--blue)) 0 100% / 0 2px no-repeat; transition: background-size 0.5s var(--ease), color 0.3s; }
 .info-card a.big:hover { background-size: 100% 2px; color: var(--blue); }
+.link-arr { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
 .offices-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; margin: 16px 0; }
 .office-name-pill { font-size: 13.5px; color: var(--ink); }
 .contact-quick-links { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
@@ -3225,7 +3227,7 @@ ul, ol { list-style: none; }
 }
 
 @media (max-width: 560px) {
-  .work-filter-bar-sticky, .svc-anchor-nav-sticky { top: 60px; }
+  .work-filter-bar-sticky, .svc-anchor-nav-sticky { top: 72px; }
   .featured-body { padding: 20px; }
   .featured-card.featured-stacked .featured-body { padding: 18px 20px; }
   .case-meta-bar { padding: 20px; }
@@ -3633,3 +3635,182 @@ ul, ol { list-style: none; }
   .faq-answer-text { font-size: 14.5px; }
 }
 
+
+/* =========================================================================
+   MOBILE RESPONSIVE REFINEMENTS
+   ========================================================================= */
+@media (max-width: 560px) {
+  .hero-actions > *,
+  .cta .acts > *,
+  .case-hero-actions > * {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+  .hero-actions .btn,
+  .cta .acts .btn,
+  .case-hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .map-controls {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .map-note {
+    flex: 1 1 100%;
+  }
+  .map-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+  .map-tab {
+    flex: 0 1 auto;
+    min-height: 38px;
+    padding: 8px 14px;
+    text-align: center;
+  }
+  .map-wrap,
+  .map-wrap canvas {
+    aspect-ratio: 2.1;
+  }
+  .map-wrap {
+    margin-bottom: 28px;
+  }
+  .pin {
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 -12px;
+    font-size: 10px;
+  }
+  .pin .tip {
+    max-width: 220px;
+    padding: 5px 8px;
+    font-size: 9.5px;
+    white-space: normal;
+    text-align: center;
+  }
+  .pin .tip-region {
+    display: none;
+  }
+
+  .field-telemetry {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    padding: 8px 10px;
+    font-size: 9.5px;
+  }
+  .field-telemetry .telem-row:last-child {
+    grid-column: 1 / -1;
+  }
+  .telem-k {
+    display: block;
+    margin-right: 0;
+    margin-bottom: 2px;
+  }
+  .telem-v {
+    display: block;
+  }
+
+  .footer li a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 7px 0;
+  }
+
+  .work-filter-pill {
+    height: 42px;
+  }
+  .svc-anchor-pill {
+    height: 40px;
+  }
+  .milestone-link,
+  .proof-stat-link,
+  .tl-proof-link,
+  .principle-proof-link,
+  .step-proof-link,
+  .view-all-link,
+  .link-arr,
+  .global-strip-link,
+  .fabsky-direct-link,
+  .case-card-btn,
+  .hero-crumb a,
+  .form-privacy-link,
+  .footer .legal a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+  }
+  .tlink {
+    min-height: 34px;
+  }
+  .area-case-chip,
+  .runs-on-chip,
+  .faq-case-chip {
+    min-height: 38px;
+  }
+  .cta-topic-chip,
+  .chips button {
+    min-height: 40px;
+  }
+  .eng-ex-link,
+  .quick-link-row {
+    min-height: 40px;
+  }
+
+  .engagement-header {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .engagement-eyebrow {
+    max-width: 100%;
+    line-height: 1.35;
+  }
+  .engagement-card {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 375px) {
+  .display {
+    font-size: 40px;
+  }
+  .h2 {
+    font-size: 28px;
+  }
+  .hero .lede {
+    font-size: 16px;
+  }
+  .map-wrap,
+  .map-wrap canvas {
+    aspect-ratio: 1.9;
+  }
+  .field-telemetry {
+    grid-template-columns: 1fr;
+  }
+  .field-telemetry .telem-row:last-child {
+    grid-column: auto;
+  }
+  .work-filter-pill {
+    height: 40px;
+  }
+  .svc-anchor-pill {
+    height: 38px;
+  }
+}
+
+/* Horizontal scrollers should not chain page swipes on touch devices */
+.work-scroll-grid,
+.milestones-wrap,
+.featured-row-grid,
+.work-ships-scroll-wrap,
+.work-filter-scroll,
+.svc-anchor-scroll {
+  overscroll-behavior-x: contain;
+}
